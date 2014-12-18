@@ -1,6 +1,6 @@
 {
   "name": "custom-css",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Angular directive-based web app to build custom stylesheets from a collection of modules",
   "author": "Brent Jackson",
   "license": "MIT",
