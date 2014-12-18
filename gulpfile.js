@@ -37,7 +37,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('data', function() {
-  var modules = require('./tasks/data')();
+  var data = require('./tasks/data');
+  var p = require('./package.json');
+  var modules = data(p);
   fs.writeFileSync('data.json', JSON.stringify(modules, null, 2));
 });
 

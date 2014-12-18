@@ -5,17 +5,16 @@ var css = require('css');
 var rework = require('rework');
 var rnpm = require('rework-npm');
 
-module.exports = function() {
+module.exports = function(p) {
 
   var result = {};
   result.modules = [];
   result.optionalModules = []; 
   result.variables = [];
-  //result.customMedia = [];
 
-  var moduleKeys = Object.keys(require('../package.json').css.modules);
-  var optionalModuleKeys = Object.keys(require('../package.json').css.optionalModules);
-  var variablesKeys = Object.keys(require('../package.json').css.variables);
+  var moduleKeys = Object.keys(p.css.modules);
+  var optionalModuleKeys = Object.keys(p.css.optionalModules);
+  var variablesKeys = Object.keys(p.css.variables);
 
   function parseModule(module, array) {
     var src = fs.readFileSync('./node_modules/' + module + '/index.css', 'utf8') || null;
