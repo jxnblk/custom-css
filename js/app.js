@@ -1,8 +1,8 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-exports.parse = require('./lib/parse');
-exports.stringify = require('./lib/stringify');
+!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.customCss=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+exports.parse = _dereq_('./lib/parse');
+exports.stringify = _dereq_('./lib/stringify');
 
-},{"./lib/parse":2,"./lib/stringify":6}],2:[function(require,module,exports){
+},{"./lib/parse":2,"./lib/stringify":6}],2:[function(_dereq_,module,exports){
 // http://www.w3.org/TR/CSS21/grammar.html
 // https://github.com/visionmedia/css-parse/pull/49#issuecomment-30088027
 var commentre = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//g
@@ -600,7 +600,7 @@ function addParent(obj, parent) {
   return obj;
 }
 
-},{}],3:[function(require,module,exports){
+},{}],3:[function(_dereq_,module,exports){
 
 /**
  * Expose `Compiler`.
@@ -652,14 +652,14 @@ Compiler.prototype.mapVisit = function(nodes, delim){
   return buf;
 };
 
-},{}],4:[function(require,module,exports){
+},{}],4:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var Base = require('./compiler');
-var inherits = require('inherits');
+var Base = _dereq_('./compiler');
+var inherits = _dereq_('inherits');
 
 /**
  * Expose compiler.
@@ -853,14 +853,14 @@ Compiler.prototype.declaration = function(node){
 };
 
 
-},{"./compiler":3,"inherits":8}],5:[function(require,module,exports){
+},{"./compiler":3,"inherits":8}],5:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var Base = require('./compiler');
-var inherits = require('inherits');
+var Base = _dereq_('./compiler');
+var inherits = _dereq_('inherits');
 
 /**
  * Expose compiler.
@@ -1109,14 +1109,14 @@ Compiler.prototype.indent = function(level) {
   return Array(this.level).join(this.indentation || '  ');
 };
 
-},{"./compiler":3,"inherits":8}],6:[function(require,module,exports){
+},{"./compiler":3,"inherits":8}],6:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var Compressed = require('./compress');
-var Identity = require('./identity');
+var Compressed = _dereq_('./compress');
+var Identity = _dereq_('./identity');
 
 /**
  * Stringfy the given AST `node`.
@@ -1141,7 +1141,7 @@ module.exports = function(node, options){
 
   // source maps
   if (options.sourcemap) {
-    var sourcemaps = require('./source-map-support');
+    var sourcemaps = _dereq_('./source-map-support');
     sourcemaps(compiler);
 
     var code = compiler.compile(node);
@@ -1158,18 +1158,18 @@ module.exports = function(node, options){
   return code;
 };
 
-},{"./compress":4,"./identity":5,"./source-map-support":7}],7:[function(require,module,exports){
+},{"./compress":4,"./identity":5,"./source-map-support":7}],7:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var SourceMap = require('source-map').SourceMapGenerator;
-var SourceMapConsumer = require('source-map').SourceMapConsumer;
-var sourceMapResolve = require('source-map-resolve');
-var urix = require('urix');
-var fs = require('fs');
-var path = require('path');
+var SourceMap = _dereq_('source-map').SourceMapGenerator;
+var SourceMapConsumer = _dereq_('source-map').SourceMapConsumer;
+var sourceMapResolve = _dereq_('source-map-resolve');
+var urix = _dereq_('urix');
+var fs = _dereq_('fs');
+var path = _dereq_('path');
 
 /**
  * Expose `mixin()`.
@@ -1286,7 +1286,7 @@ exports.comment = function(node) {
     return this._comment(node);
 };
 
-},{"fs":23,"path":27,"source-map":12,"source-map-resolve":11,"urix":22}],8:[function(require,module,exports){
+},{"fs":23,"path":27,"source-map":12,"source-map-resolve":11,"urix":22}],8:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -1311,7 +1311,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],9:[function(require,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -1360,7 +1360,7 @@ void (function(root, factory) {
 
 }));
 
-},{}],10:[function(require,module,exports){
+},{}],10:[function(_dereq_,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -1419,7 +1419,7 @@ void (function(root, factory) {
 
 }));
 
-},{}],11:[function(require,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
@@ -1431,8 +1431,8 @@ void (function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["source-map-url", "resolve-url"], factory)
   } else if (typeof exports === "object") {
-    var sourceMappingURL = require("source-map-url")
-    var resolveUrl = require("resolve-url")
+    var sourceMappingURL = _dereq_("source-map-url")
+    var resolveUrl = _dereq_("resolve-url")
     module.exports = factory(sourceMappingURL, resolveUrl)
   } else {
     root.sourceMapResolve = factory(root.sourceMappingURL, root.resolveUrl)
@@ -1644,17 +1644,17 @@ void (function(root, factory) {
 
 }));
 
-},{"resolve-url":9,"source-map-url":10}],12:[function(require,module,exports){
+},{"resolve-url":9,"source-map-url":10}],12:[function(_dereq_,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
  * http://opensource.org/licenses/BSD-3-Clause
  */
-exports.SourceMapGenerator = require('./source-map/source-map-generator').SourceMapGenerator;
-exports.SourceMapConsumer = require('./source-map/source-map-consumer').SourceMapConsumer;
-exports.SourceNode = require('./source-map/source-node').SourceNode;
+exports.SourceMapGenerator = _dereq_('./source-map/source-map-generator').SourceMapGenerator;
+exports.SourceMapConsumer = _dereq_('./source-map/source-map-consumer').SourceMapConsumer;
+exports.SourceNode = _dereq_('./source-map/source-node').SourceNode;
 
-},{"./source-map/source-map-consumer":17,"./source-map/source-map-generator":18,"./source-map/source-node":19}],13:[function(require,module,exports){
+},{"./source-map/source-map-consumer":17,"./source-map/source-map-generator":18,"./source-map/source-node":19}],13:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -1662,11 +1662,11 @@ exports.SourceNode = require('./source-map/source-node').SourceNode;
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
-  var util = require('./util');
+  var util = _dereq_('./util');
 
   /**
    * A data structure which is a combination of an array and a set. Adding a new
@@ -1753,7 +1753,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./util":20,"amdefine":21}],14:[function(require,module,exports){
+},{"./util":20,"amdefine":21}],14:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -1791,11 +1791,11 @@ define(function (require, exports, module) {
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
-  var base64 = require('./base64');
+  var base64 = _dereq_('./base64');
 
   // A single base 64 digit can contain 6 bits of data. For the base 64 variable
   // length quantities we use in the source map spec, the first bit is the sign,
@@ -1897,7 +1897,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./base64":15,"amdefine":21}],15:[function(require,module,exports){
+},{"./base64":15,"amdefine":21}],15:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -1905,9 +1905,9 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
   var charToIntMap = {};
   var intToCharMap = {};
@@ -1941,7 +1941,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":21}],16:[function(require,module,exports){
+},{"amdefine":21}],16:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -1949,9 +1949,9 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
   /**
    * Recursive implementation of binary search.
@@ -1967,17 +1967,17 @@ define(function (require, exports, module) {
     //
     //   1. We find the exact element we are looking for.
     //
-    //   2. We did not find the exact element, but we can return the index of
-    //      the next closest element that is less than that element.
+    //   2. We did not find the exact element, but we can return the next
+    //      closest element that is less than that element.
     //
     //   3. We did not find the exact element, and there is no next-closest
     //      element which is less than the one we are searching for, so we
-    //      return -1.
+    //      return null.
     var mid = Math.floor((aHigh - aLow) / 2) + aLow;
     var cmp = aCompare(aNeedle, aHaystack[mid], true);
     if (cmp === 0) {
       // Found the element we are looking for.
-      return mid;
+      return aHaystack[mid];
     }
     else if (cmp > 0) {
       // aHaystack[mid] is greater than our needle.
@@ -1987,7 +1987,7 @@ define(function (require, exports, module) {
       }
       // We did not find an exact match, return the next closest one
       // (termination case 2).
-      return mid;
+      return aHaystack[mid];
     }
     else {
       // aHaystack[mid] is less than our needle.
@@ -1997,16 +1997,18 @@ define(function (require, exports, module) {
       }
       // The exact needle element was not found in this haystack. Determine if
       // we are in termination case (2) or (3) and return the appropriate thing.
-      return aLow < 0 ? -1 : aLow;
+      return aLow < 0
+        ? null
+        : aHaystack[aLow];
     }
   }
 
   /**
    * This is an implementation of binary search which will always try and return
-   * the index of next lowest value checked if there is no exact hit. This is
-   * because mappings between original and generated line/col pairs are single
-   * points, and there is an implicit region between each of them, so a miss
-   * just means that you aren't on the very start of a region.
+   * the next lowest value checked if there is no exact hit. This is because
+   * mappings between original and generated line/col pairs are single points,
+   * and there is an implicit region between each of them, so a miss just means
+   * that you aren't on the very start of a region.
    *
    * @param aNeedle The element you are looking for.
    * @param aHaystack The array that is being searched.
@@ -2015,15 +2017,14 @@ define(function (require, exports, module) {
    *     than, equal to, or greater than the element, respectively.
    */
   exports.search = function search(aNeedle, aHaystack, aCompare) {
-    if (aHaystack.length === 0) {
-      return -1;
-    }
-    return recursiveSearch(-1, aHaystack.length, aNeedle, aHaystack, aCompare)
+    return aHaystack.length > 0
+      ? recursiveSearch(-1, aHaystack.length, aNeedle, aHaystack, aCompare)
+      : null;
   };
 
 });
 
-},{"amdefine":21}],17:[function(require,module,exports){
+},{"amdefine":21}],17:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2031,14 +2032,14 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
-  var util = require('./util');
-  var binarySearch = require('./binary-search');
-  var ArraySet = require('./array-set').ArraySet;
-  var base64VLQ = require('./base64-vlq');
+  var util = _dereq_('./util');
+  var binarySearch = _dereq_('./binary-search');
+  var ArraySet = _dereq_('./array-set').ArraySet;
+  var base64VLQ = _dereq_('./base64-vlq');
 
   /**
    * A SourceMapConsumer instance represents a parsed source map which we can
@@ -2091,11 +2092,6 @@ define(function (require, exports, module) {
     if (version != this._version) {
       throw new Error('Unsupported version: ' + version);
     }
-
-    // Some source maps produce relative source paths like "./foo.js" instead of
-    // "foo.js".  Normalize these first so that future comparisons will succeed.
-    // See bugzil.la/1090768.
-    sources = sources.map(util.normalize);
 
     // Pass `true` below to allow duplicate names and sources. While source maps
     // are intended to be compressed and deduplicated, the TypeScript compiler
@@ -2322,33 +2318,6 @@ define(function (require, exports, module) {
     };
 
   /**
-   * Compute the last column for each generated mapping. The last column is
-   * inclusive.
-   */
-  SourceMapConsumer.prototype.computeColumnSpans =
-    function SourceMapConsumer_computeColumnSpans() {
-      for (var index = 0; index < this._generatedMappings.length; ++index) {
-        var mapping = this._generatedMappings[index];
-
-        // Mappings do not contain a field for the last generated columnt. We
-        // can come up with an optimistic estimate, however, by assuming that
-        // mappings are contiguous (i.e. given two consecutive mappings, the
-        // first mapping ends where the second one starts).
-        if (index + 1 < this._generatedMappings.length) {
-          var nextMapping = this._generatedMappings[index + 1];
-
-          if (mapping.generatedLine === nextMapping.generatedLine) {
-            mapping.lastGeneratedColumn = nextMapping.generatedColumn - 1;
-            continue;
-          }
-        }
-
-        // The last mapping for each line spans the entire line.
-        mapping.lastGeneratedColumn = Infinity;
-      }
-    };
-
-  /**
    * Returns the original source, line, and column information for the generated
    * source's line and column positions provided. The only argument is an object
    * with the following properties:
@@ -2370,27 +2339,23 @@ define(function (require, exports, module) {
         generatedColumn: util.getArg(aArgs, 'column')
       };
 
-      var index = this._findMapping(needle,
-                                    this._generatedMappings,
-                                    "generatedLine",
-                                    "generatedColumn",
-                                    util.compareByGeneratedPositions);
+      var mapping = this._findMapping(needle,
+                                      this._generatedMappings,
+                                      "generatedLine",
+                                      "generatedColumn",
+                                      util.compareByGeneratedPositions);
 
-      if (index >= 0) {
-        var mapping = this._generatedMappings[index];
-
-        if (mapping.generatedLine === needle.generatedLine) {
-          var source = util.getArg(mapping, 'source', null);
-          if (source != null && this.sourceRoot != null) {
-            source = util.join(this.sourceRoot, source);
-          }
-          return {
-            source: source,
-            line: util.getArg(mapping, 'originalLine', null),
-            column: util.getArg(mapping, 'originalColumn', null),
-            name: util.getArg(mapping, 'name', null)
-          };
+      if (mapping && mapping.generatedLine === needle.generatedLine) {
+        var source = util.getArg(mapping, 'source', null);
+        if (source != null && this.sourceRoot != null) {
+          source = util.join(this.sourceRoot, source);
         }
+        return {
+          source: source,
+          line: util.getArg(mapping, 'originalLine', null),
+          column: util.getArg(mapping, 'originalColumn', null),
+          name: util.getArg(mapping, 'name', null)
+        };
       }
 
       return {
@@ -2468,80 +2433,23 @@ define(function (require, exports, module) {
         needle.source = util.relative(this.sourceRoot, needle.source);
       }
 
-      var index = this._findMapping(needle,
-                                    this._originalMappings,
-                                    "originalLine",
-                                    "originalColumn",
-                                    util.compareByOriginalPositions);
+      var mapping = this._findMapping(needle,
+                                      this._originalMappings,
+                                      "originalLine",
+                                      "originalColumn",
+                                      util.compareByOriginalPositions);
 
-      if (index >= 0) {
-        var mapping = this._originalMappings[index];
-
+      if (mapping) {
         return {
           line: util.getArg(mapping, 'generatedLine', null),
-          column: util.getArg(mapping, 'generatedColumn', null),
-          lastColumn: util.getArg(mapping, 'lastGeneratedColumn', null)
+          column: util.getArg(mapping, 'generatedColumn', null)
         };
       }
 
       return {
         line: null,
-        column: null,
-        lastColumn: null
+        column: null
       };
-    };
-
-  /**
-   * Returns all generated line and column information for the original source
-   * and line provided. The only argument is an object with the following
-   * properties:
-   *
-   *   - source: The filename of the original source.
-   *   - line: The line number in the original source.
-   *
-   * and an array of objects is returned, each with the following properties:
-   *
-   *   - line: The line number in the generated source, or null.
-   *   - column: The column number in the generated source, or null.
-   */
-  SourceMapConsumer.prototype.allGeneratedPositionsFor =
-    function SourceMapConsumer_allGeneratedPositionsFor(aArgs) {
-      // When there is no exact match, SourceMapConsumer.prototype._findMapping
-      // returns the index of the closest mapping less than the needle. By
-      // setting needle.originalColumn to Infinity, we thus find the last
-      // mapping for the given line, provided such a mapping exists.
-      var needle = {
-        source: util.getArg(aArgs, 'source'),
-        originalLine: util.getArg(aArgs, 'line'),
-        originalColumn: Infinity
-      };
-
-      if (this.sourceRoot != null) {
-        needle.source = util.relative(this.sourceRoot, needle.source);
-      }
-
-      var mappings = [];
-
-      var index = this._findMapping(needle,
-                                    this._originalMappings,
-                                    "originalLine",
-                                    "originalColumn",
-                                    util.compareByOriginalPositions);
-      if (index >= 0) {
-        var mapping = this._originalMappings[index];
-
-        while (mapping && mapping.originalLine === needle.originalLine) {
-          mappings.push({
-            line: util.getArg(mapping, 'generatedLine', null),
-            column: util.getArg(mapping, 'generatedColumn', null),
-            lastColumn: util.getArg(mapping, 'lastGeneratedColumn', null)
-          });
-
-          mapping = this._originalMappings[--index];
-        }
-      }
-
-      return mappings.reverse();
     };
 
   SourceMapConsumer.GENERATED_ORDER = 1;
@@ -2601,7 +2509,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":13,"./base64-vlq":14,"./binary-search":16,"./util":20,"amdefine":21}],18:[function(require,module,exports){
+},{"./array-set":13,"./base64-vlq":14,"./binary-search":16,"./util":20,"amdefine":21}],18:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -2609,13 +2517,13 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
-  var base64VLQ = require('./base64-vlq');
-  var util = require('./util');
-  var ArraySet = require('./array-set').ArraySet;
+  var base64VLQ = _dereq_('./base64-vlq');
+  var util = _dereq_('./util');
+  var ArraySet = _dereq_('./array-set').ArraySet;
 
   /**
    * An instance of the SourceMapGenerator represents a source map which is
@@ -3004,7 +2912,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./array-set":13,"./base64-vlq":14,"./util":20,"amdefine":21}],19:[function(require,module,exports){
+},{"./array-set":13,"./base64-vlq":14,"./util":20,"amdefine":21}],19:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -3012,12 +2920,12 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
-  var SourceMapGenerator = require('./source-map-generator').SourceMapGenerator;
-  var util = require('./util');
+  var SourceMapGenerator = _dereq_('./source-map-generator').SourceMapGenerator;
+  var util = _dereq_('./util');
 
   // Matches a Windows-style `\r\n` newline or a `\n` newline used by all other
   // operating systems these days (capturing the result).
@@ -3414,7 +3322,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"./source-map-generator":18,"./util":20,"amdefine":21}],20:[function(require,module,exports){
+},{"./source-map-generator":18,"./util":20,"amdefine":21}],20:[function(_dereq_,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -3422,9 +3330,9 @@ define(function (require, exports, module) {
  * http://opensource.org/licenses/BSD-3-Clause
  */
 if (typeof define !== 'function') {
-    var define = require('amdefine')(module, require);
+    var define = _dereq_('amdefine')(module, _dereq_);
 }
-define(function (require, exports, module) {
+define(function (_dereq_, exports, module) {
 
   /**
    * This is a helper function for getting values from parameter/options
@@ -3735,7 +3643,7 @@ define(function (require, exports, module) {
 
 });
 
-},{"amdefine":21}],21:[function(require,module,exports){
+},{"amdefine":21}],21:[function(_dereq_,module,exports){
 (function (process,__filename){
 /** vim: et:ts=4:sw=4:sts=4
  * @license amdefine 0.1.0 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
@@ -3762,7 +3670,7 @@ function amdefine(module, requireFn) {
     var defineCache = {},
         loaderCache = {},
         alreadyCalled = false,
-        path = require('path'),
+        path = _dereq_('path'),
         makeRequire, stringRequire;
 
     /**
@@ -4037,12 +3945,12 @@ function amdefine(module, requireFn) {
 
 module.exports = amdefine;
 
-}).call(this,require("oMfpAn"),"/../../node_modules/css/node_modules/source-map/node_modules/amdefine/amdefine.js")
-},{"oMfpAn":28,"path":27}],22:[function(require,module,exports){
+}).call(this,_dereq_("oMfpAn"),"/../../node_modules/css/node_modules/source-map/node_modules/amdefine/amdefine.js")
+},{"oMfpAn":28,"path":27}],22:[function(_dereq_,module,exports){
 // Copyright 2014 Simon Lydell
 // X11 (“MIT”) Licensed. (See LICENSE.)
 
-var path = require("path")
+var path = _dereq_("path")
 
 "use strict"
 
@@ -4057,9 +3965,9 @@ function urix(aPath) {
 
 module.exports = urix
 
-},{"path":27}],23:[function(require,module,exports){
+},{"path":27}],23:[function(_dereq_,module,exports){
 
-},{}],24:[function(require,module,exports){
+},{}],24:[function(_dereq_,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -4067,8 +3975,8 @@ module.exports = urix
  * @license  MIT
  */
 
-var base64 = require('base64-js')
-var ieee754 = require('ieee754')
+var base64 = _dereq_('base64-js')
+var ieee754 = _dereq_('ieee754')
 
 exports.Buffer = Buffer
 exports.SlowBuffer = Buffer
@@ -5170,7 +5078,7 @@ function assert (test, message) {
   if (!test) throw new Error(message || 'Failed assertion')
 }
 
-},{"base64-js":25,"ieee754":26}],25:[function(require,module,exports){
+},{"base64-js":25,"ieee754":26}],25:[function(_dereq_,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -5292,7 +5200,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],26:[function(require,module,exports){
+},{}],26:[function(_dereq_,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -5378,7 +5286,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],27:[function(require,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -5605,8 +5513,8 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-}).call(this,require("oMfpAn"))
-},{"oMfpAn":28}],28:[function(require,module,exports){
+}).call(this,_dereq_("oMfpAn"))
+},{"oMfpAn":28}],28:[function(_dereq_,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -5671,7 +5579,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],29:[function(require,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 (function (global){
 (function() {
   var Humanize, isArray, isFinite, isNaN, objectRef, timeFormats, toString;
@@ -6107,13 +6015,13 @@ process.chdir = function (dir) {
 }).call(this);
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],30:[function(require,module,exports){
+},{}],30:[function(_dereq_,module,exports){
 /**
  * Module dependencies.
  */
 
-var balanced = require('balanced-match');
-var visit = require('rework-visit');
+var balanced = _dereq_('balanced-match');
+var visit = _dereq_('rework-visit');
 
 /**
  * Constants.
@@ -6266,7 +6174,7 @@ function getUnitsInExpression(expression) {
   return uniqueUnits;
 }
 
-},{"balanced-match":31,"rework-visit":32}],31:[function(require,module,exports){
+},{"balanced-match":31,"rework-visit":32}],31:[function(_dereq_,module,exports){
 module.exports = function(a, b, str) {
   var bal = 0;
   var m = {};
@@ -6292,7 +6200,7 @@ module.exports = function(a, b, str) {
 };
 
 
-},{}],32:[function(require,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 
 /**
  * Expose `visit()`.
@@ -6332,7 +6240,7 @@ function visit(node, fn){
   });
 };
 
-},{}],33:[function(require,module,exports){
+},{}],33:[function(_dereq_,module,exports){
 /**
  * Constants.
  */
@@ -6388,15 +6296,15 @@ module.exports = function customMedia(options) {
   };
 };
 
-},{}],34:[function(require,module,exports){
+},{}],34:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var parse = require('color-parser');
-var hsb2rgb = require('hsb2rgb');
-var functions = require('rework-plugin-function');
+var parse = _dereq_('color-parser');
+var hsb2rgb = _dereq_('hsb2rgb');
+var functions = _dereq_('rework-plugin-function');
 
 /**
  * Provide color manipulation helpers.
@@ -6463,7 +6371,7 @@ module.exports = function() {
   });
 };
 
-},{"color-parser":36,"hsb2rgb":37,"rework-plugin-function":38}],35:[function(require,module,exports){
+},{"color-parser":36,"hsb2rgb":37,"rework-plugin-function":38}],35:[function(_dereq_,module,exports){
 
 module.exports = {
     aliceblue: [240, 248, 255]
@@ -6614,13 +6522,13 @@ module.exports = {
   , yellow: [255, 255, 0]
   , yellowgreen: [154, 205, 5]
 };
-},{}],36:[function(require,module,exports){
+},{}],36:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var colors = require('./colors');
+var colors = _dereq_('./colors');
 
 /**
  * Expose `parse`.
@@ -6743,7 +6651,7 @@ function hex3(str) {
 }
 
 
-},{"./colors":35}],37:[function(require,module,exports){
+},{"./colors":35}],37:[function(_dereq_,module,exports){
 
 function hsb2rgb(hue, saturation, value) {
   hue = (parseInt(hue, 10) || 0) % 360;
@@ -6793,13 +6701,13 @@ function hsb2rgb(hue, saturation, value) {
 
 module.exports = hsb2rgb;
 
-},{}],38:[function(require,module,exports){
+},{}],38:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var visit = require('rework-visit');
+var visit = _dereq_('rework-visit');
 
 /**
  * Define custom function.
@@ -6896,15 +6804,15 @@ function strip(str) {
     return str;
 }
 
-},{"rework-visit":39}],39:[function(require,module,exports){
-module.exports=require(32)
-},{}],40:[function(require,module,exports){
+},{"rework-visit":39}],39:[function(_dereq_,module,exports){
+module.exports=_dereq_(32)
+},{}],40:[function(_dereq_,module,exports){
 /**
  * Module dependencies.
  */
 
-var balanced = require('balanced-match');
-var visit = require('rework-visit');
+var balanced = _dereq_('balanced-match');
+var visit = _dereq_('rework-visit');
 
 /**
  * Constants.
@@ -7029,18 +6937,18 @@ function resolveValue(value, map) {
   return value;
 }
 
-},{"balanced-match":41,"rework-visit":42}],41:[function(require,module,exports){
-module.exports=require(31)
-},{}],42:[function(require,module,exports){
-module.exports=require(32)
-},{}],43:[function(require,module,exports){
+},{"balanced-match":41,"rework-visit":42}],41:[function(_dereq_,module,exports){
+module.exports=_dereq_(31)
+},{}],42:[function(_dereq_,module,exports){
+module.exports=_dereq_(32)
+},{}],43:[function(_dereq_,module,exports){
 
 /**
  * Module dependencies.
  */
 
-var css = require('css');
-var convertSourceMap = require('convert-source-map');
+var css = _dereq_('css');
+var convertSourceMap = _dereq_('convert-source-map');
 var parse = css.parse;
 var stringify = css.stringify;
 
@@ -7117,11 +7025,11 @@ function sourcemapToComment(map) {
   return '/*# sourceMappingURL=data:application/json;base64,' + content + ' */';
 }
 
-},{"convert-source-map":44,"css":1}],44:[function(require,module,exports){
+},{"convert-source-map":44,"css":1}],44:[function(_dereq_,module,exports){
 (function (Buffer){
 'use strict';
-var fs = require('fs');
-var path = require('path');
+var fs = _dereq_('fs');
+var path = _dereq_('path');
 
 var commentRx = /^[ \t]*(?:\/\/|\/\*)[@#][ \t]+sourceMappingURL=data:(?:application|text)\/json;base64,(.+)(?:\*\/)?/mg;
 var mapFileCommentRx =
@@ -7259,32 +7167,18 @@ exports.__defineGetter__('mapFileCommentRegex', function () {
   return mapFileCommentRx; 
 });
 
-}).call(this,require("buffer").Buffer)
-},{"buffer":24,"fs":23,"path":27}],45:[function(require,module,exports){
-
-
+}).call(this,_dereq_("buffer").Buffer)
+},{"buffer":24,"fs":23,"path":27}],45:[function(_dereq_,module,exports){
 
 module.exports = function($scope, $http, $window, compile) {
 
-  $scope.styles = "body,button{margin:0}button,input,textarea{font-family:inherit;font-size:100%}body{font-family:'Helvetica Neue',Helvetica,sans-serif;line-height:1.5;font-size:100%}h2{font-family:'Helvetica Neue',Helvetica,sans-serif;font-weight:700;line-height:1.25;margin-top:1em;margin-bottom:.5em}ol,p{font-size:1rem;margin-top:0;margin-bottom:1rem}ol{padding-left:2rem}h2{font-size:1.5rem}.h5{font-size:.875rem}.h6{font-size:.75rem}.list-reset{list-style:none;padding-left:0}input,textarea{margin-top:0;margin-bottom:.5rem}input[type=text]{box-sizing:border-box;height:2.25em;padding:.25em 1rem;-webkit-appearance:none}textarea{box-sizing:border-box;line-height:1.75;padding:.25em 1rem}.button,button{font-weight:700;text-decoration:none;cursor:pointer;display:inline-block;box-sizing:border-box;line-height:1.125;padding:.5em 1rem;margin:0;height:auto;border:1px solid transparent;-webkit-appearance:none}::-moz-focus-inner{border:0;padding:0}.button:hover{text-decoration:none}.block{display:block}.full-width{width:100%}.bold{font-weight:700}.regular{font-weight:400}.m0{margin:0}.mb0{margin-bottom:0}.mr2{margin-right:1rem}.mb2{margin-bottom:1rem}.ml2{margin-left:1rem}.mb3{margin-bottom:2rem}.mxn2{margin-left:-1rem;margin-right:-1rem}.p1{padding:.5rem}.py1{padding-top:.5rem;padding-bottom:.5rem}.px1{padding-left:.5rem;padding-right:.5rem}.px2{padding-left:1rem;padding-right:1rem}.py3{padding-top:2rem;padding-bottom:2rem}@media (min-width:40em){.sm-col-6{width:50%}}@media (min-width:52em){.md-col-4{width:33.33333333333333%}.md-col-8{width:66.66666666666666%}}@media (min-width:64em){.lg-col-4{width:33.33333333333333%}}.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.flex-column{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.flex-wrap{-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}.flex-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.flex-stretch{-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch}.flex-auto{-webkit-box-flex:1;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto}.flex-grow{-webkit-box-flex:1;-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto}.flex-none{-webkit-box-flex:0;-webkit-flex:none;-ms-flex:none;flex:none}@media (min-width:40em){.sm-flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}}@media (min-width:52em){.md-flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}}body{color:#333;background-color:#fff}a{color:#0076df;text-decoration:none}a:hover{text-decoration:underline}.field-light{background-color:#fff;-webkit-transition:box-shadow .2s ease;transition:box-shadow .2s ease;border-style:solid;border-width:1px;border-color:#ccc;border-radius:3px}.field-light:focus{outline:0;border-color:#0076df;box-shadow:0 0 2px rgba(0,118,223,.5)}.field-light:disabled{color:#777;background-color:rgba(0,0,0,.125)}.field-dark{color:#fff;background-color:rgba(0,0,0,.25);border:1px solid rgba(0,0,0,.0625);border-radius:3px}.field-dark::-moz-placeholder{color:rgba(255,255,255,.75)}.field-dark:-ms-input-placeholder{color:rgba(255,255,255,.75)}.field-dark::placeholder{color:rgba(255,255,255,.75)}.field-dark:focus{outline:0;border:1px solid rgba(255,255,255,.5)}.button-blue{color:#fff;background-color:#0076df;border-radius:3px;-webkit-transition-duration:.1s;transition-duration:.1s;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;-webkit-transition-property:box-shadow,background-color;transition-property:box-shadow,background-color}.button-blue:hover{opacity:.875}.button-blue:active{box-shadow:inset 0 0 0 32px rgba(0,0,0,.125),inset 0 2px 3px 0 rgba(0,0,0,.25)}.button-blue:focus{outline:0;box-shadow:0 0 0 2px rgba(255,255,255,.5),0 0 1px 4px rgba(0,118,223,.5)}.button-blue:disabled{opacity:.5}.button-blue-outline{line-height:1;color:#0076df;background-color:transparent;border-radius:3px;border:2px solid #0076df;-webkit-transition-duration:.1s;transition-duration:.1s;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;-webkit-transition-property:box-shadow,background-color;transition-property:box-shadow,background-color}.button-blue-outline:hover{color:#fff;background-color:#0076df}.button-blue-outline:active{box-shadow:inset 0 3px 3px 0 rgba(0,0,0,.25)}.button-blue-outline:focus{outline:0;box-shadow:0 0 0 2px rgba(255,255,255,.5),0 0 1px 4px rgba(0,118,223,.5)}.button-blue-outline:disabled{color:#0076df;background-color:transparent;opacity:.5}.button-gray:is-active{box-shadow:inset 0 0 0 32px rgba(0,0,0,.125),inset 0 2px 3px 0 rgba(0,0,0,.25)}.button-nav-light:hover{background-color:rgba(0,0,0,.0625)}.button-nav-light:active{color:#333}.white{color:#fff}.bg-dark-gray{background-color:#333}.border{border-style:solid;border-width:1px;border-color:#ccc}.rounded{border-radius:3px}.border-box{box-sizing:border-box}.pointer{cursor:pointer}.bg-light-blue{background-color:rgba(0,118,223,.0625)}";
-
-  $scope.addStates = function() {
-    $scope.modules.forEach(function(m, i) {
-      m.isActive = true;
-    });
-    $scope.optionalModules.forEach(function(m, i) {
-      m.isActive = false;
-    });
-    $scope.variables.forEach(function(v, i) {
-      v.isActive = true;
-    });
-  }
-
+  $scope.collections = [];
+  $scope.variablesCollections = [];
   $scope.includes = [];
   $scope.compiled = '';
 
   $scope.build = function() {
-    $scope.compiled = compile([$scope.modules, $scope.optionalModules, $scope.variables]);
+    $scope.compiled = compile($scope.collections.concat($scope.variablesCollections));
     updateDownloadLink();
   };
 
@@ -7312,21 +7206,44 @@ module.exports = function($scope, $http, $window, compile) {
 };
 
 
-},{}],46:[function(require,module,exports){
+},{}],46:[function(_dereq_,module,exports){
 
 module.exports = function($http) {
+  var index = 0;
   return {
-    controller: 'MainCtrl',
     scope: true,
     link: {
       pre: function(scope, el, attr) {
-        scope.dataSource = attr.src;
+        scope.index = index;
+        index++;
+
+        var isVariables = false;
+
+        if (attr.variables) {
+          isVariables = true;
+        }
+
+        function createVariablesArray(modules) {
+          scope.variables = [];
+          scope.customMedia = [];
+          modules.forEach(function(module, i, modules) {
+            module.isActive = true;
+            module.ast.stylesheet.rules.forEach(function(rule, j, rules) {
+              if (!rule.selectors) return;
+              if (rule.selectors[0] == ':root') {
+                rule.declarations.forEach(function(d, k, declarations) {
+                  scope.variables.push(d);
+                });
+              }
+            });
+          });
+        }
+
         $http.get(attr.src)
           .success(function(data) {
-            scope.modules = data.modules;
-            scope.optionalModules = data.optionalModules;
-            scope.variables = data.variables;
-            scope.addStates();
+            scope.modules = data;
+            if (isVariables) createVariablesArray(scope.modules);
+            scope.collections[scope.index] = scope.modules;
             // Init
             scope.build();
           });
@@ -7335,33 +7252,32 @@ module.exports = function($http) {
   }
 };
 
-},{}],47:[function(require,module,exports){
+},{}],47:[function(_dereq_,module,exports){
 
-
-
-module.exports = function() {
-  var template = "<label class=\"flex full-width p1 flex-center button-nav-light border rounded pointer\"\n  ng-class=\"{'bg-light-blue': module.isActive }\">\n  <div class=\"px1\">\n    <input type=\"checkbox\" ng-model=\"module.isActive\" ng-change=\"build()\">\n  </div>\n  <div class=\"flex-auto px1\">\n    <h2 class=\"m0\">{{ module.id }} <small class=\"h5 regular\"> {{ module.version }}</small></h2>\n    <p class=\"mb0\">{{ module.description }}</p>\n    <a ng-href=\"http://npmjs.com/packages/{{ module.id }}\" target=\"_blank\" class=\"h6 mr2\">\n      NPM\n    </a>\n    <a ng-href=\"{{ module.homepage }}\" target=\"_blank\" class=\"h6\">\n      Github\n    </a>\n  </div>\n</label>\n";
+module.exports = function($http) {
   return {
-    template: template,
+    controller: 'MainCtrl',
     scope: true,
-    link: function(scope, el, attr) {
+    link: {
+      pre: function(scope, el, attr) {
+        //scope.dataSource = attr.src;
+        /*
+        $http.get(attr.src)
+          .success(function(data) {
+            scope.modules = data.modules;
+            scope.optionalModules = data.optionalModules;
+            scope.variables = data.variables;
+            //scope.addStates();
+            // Init
+            scope.build();
+          });
+        */
+      }
     }
   }
 };
 
-},{}],48:[function(require,module,exports){
-
-
-
-module.exports = function() {
-  var template = "\n<div class=\"CustomCss md-flex flex-stretch\">\n  <style>{{ styles }}</style>\n  <div class=\"md-col-8 py3\">\n\n    <section class=\"px2 mb3\">\n      <div class=\"sm-flex flex-center mb2\">\n        <h2 class=\"flex-auto m0 py1\">Standard Modules </h2>\n        <button class=\"h5 ml2 mr2 button-blue-outline\" ng-click=\"deselectAll(modules)\">Deselect All</button>\n        <button class=\"h5 button-blue-outline\" ng-click=\"selectAll(modules)\">Select All</button>\n      </div>\n      <form>\n        <ol class=\"list-reset sm-flex flex-wrap mxn2\">\n          <li ng-repeat=\"module in modules\"\n            custom-css-module\n            class=\"flex border-box sm-col-6 px2 mb3\"></li>\n        </ol>\n      </form>\n    </section>\n\n    <section class=\"px2 py3\">\n      <h2>Optional Modules</h2>\n      <form>\n        <ol class=\"list-reset sm-flex flex-wrap mxn2\">\n          <li ng-repeat=\"module in optionalModules\"\n            custom-css-module\n            class=\"flex border-box sm-col-6 px2 mb3\"></li>\n        </ol>\n      </form>\n    </section>\n\n    <section class=\"px2 py3\">\n      <h2>Variables</h2>\n      <form>\n        <div ng-repeat=\"module in variables\"\n          ng-if=\"module.ast.stylesheet.rules\">\n          <ol class=\"list-reset sm-flex flex-wrap\"\n            ng-repeat=\"rule in module.ast.stylesheet.rules\"\n            ng-if=\"rule.selectors[0] == ':root'\">\n            <li class=\"sm-col-6 lg-col-4\" ng-repeat=\"v in rule.declarations\">\n              <label class=\"h5 bold\">{{ v.property }}:</label>\n              <input type=\"text\" class=\"block field-light\" ng-model=\"v.value\" ng-change=\"build()\">\n            </li>\n          </ol>\n        </div>\n      </form>\n    </section>\n\n  </div>\n\n  <section class=\"flex flex-column md-col-4 px2 py3 white bg-dark-gray\">\n    <div class=\"sm-flex flex-center mb2\">\n      <div class=\"flex-auto py1\">\n        <h2 class=\"m0\">Compiled CSS ({{ fileSize | filesize }})</h2>\n        <p class=\"h5 m0\">Without vendor prefixes</p>\n      </div>\n      <a class=\"flex-none button button-blue\"\n        ng-href=\"{{ downloadURL }}\"\n        download=\"basscss-custom.css\">\n          Download\n      </a>\n    </div>\n    <textarea class=\"flex-grow full-width field-dark monospace\" style=\"min-height:80vh\">{{ compiled }}</textarea>\n    <div class=\"mb2\">\n      <a class=\"flex-none button button-blue\"\n        ng-href=\"{{ downloadURL }}\"\n        download=\"basscss-custom.css\">\n          Download\n      </a>\n    </div>\n  </section>\n\n</div>\n\n";
-  return {
-    template: template
-  }
-};
-
-
-},{}],49:[function(require,module,exports){
+},{}],48:[function(_dereq_,module,exports){
 // App
 
 var customCss = angular.module('custom-css', []);
@@ -7371,26 +7287,28 @@ customCss.config(['$compileProvider', function( $compileProvider ) {
   }
 ]);
 
-customCss.service('compile', require('./services/compile'));
+customCss.service('compile', _dereq_('./services/compile'));
 
-customCss.directive('customCss', require('./directives/custom-css'));
-customCss.directive('customCssView', require('./directives/view'));
-customCss.directive('customCssModule', require('./directives/module'));
+customCss.directive('customCss', _dereq_('./directives/custom-css'));
+customCss.directive('customCssCollection', _dereq_('./directives/collection'));
 
-
-customCss.controller('MainCtrl', require('./controllers/main'));
-
-
-customCss.filter('astCss', require('./filters/ast-css'));
-
-customCss.filter('filesize', require('./filters/filesize'));
-
-module.exports = customCss;
+//customCss.directive('customCssView', require('./directives/view'));
+//customCss.directive('customCssModule', require('./directives/module'));
 
 
-},{"./controllers/main":45,"./directives/custom-css":46,"./directives/module":47,"./directives/view":48,"./filters/ast-css":50,"./filters/filesize":51,"./services/compile":52}],50:[function(require,module,exports){
+customCss.controller('MainCtrl', _dereq_('./controllers/main'));
 
-var css = require('css');
+
+customCss.filter('astCss', _dereq_('./filters/ast-css'));
+
+customCss.filter('filesize', _dereq_('./filters/filesize'));
+
+//module.exports = customCss;
+
+
+},{"./controllers/main":45,"./directives/collection":46,"./directives/custom-css":47,"./filters/ast-css":49,"./filters/filesize":50,"./services/compile":51}],49:[function(_dereq_,module,exports){
+
+var css = _dereq_('css');
 
 module.exports = function() {
   return function(ast) {
@@ -7399,9 +7317,9 @@ module.exports = function() {
 };
 
 
-},{"css":1}],51:[function(require,module,exports){
+},{"css":1}],50:[function(_dereq_,module,exports){
 
-var Humanize = require('humanize-plus');
+var Humanize = _dereq_('humanize-plus');
 
 module.exports = function() {
   return function(n) {
@@ -7409,14 +7327,14 @@ module.exports = function() {
   }
 };
 
-},{"humanize-plus":29}],52:[function(require,module,exports){
+},{"humanize-plus":29}],51:[function(_dereq_,module,exports){
 
-var css = require('css');
-var rework = require('rework');
-var rvars = require('rework-vars');
-var rcm = require('rework-custom-media');
-var rcalc = require('rework-calc');
-var rcolors = require('rework-plugin-colors');
+var css = _dereq_('css');
+var rework = _dereq_('rework');
+var rvars = _dereq_('rework-vars');
+var rcm = _dereq_('rework-custom-media');
+var rcalc = _dereq_('rework-calc');
+var rcolors = _dereq_('rework-plugin-colors');
 
 module.exports = function() {
   return function(arr) {
@@ -7452,4 +7370,6 @@ module.exports = function() {
 };
 
 
-},{"css":1,"rework":43,"rework-calc":30,"rework-custom-media":33,"rework-plugin-colors":34,"rework-vars":40}]},{},[49])
+},{"css":1,"rework":43,"rework-calc":30,"rework-custom-media":33,"rework-plugin-colors":34,"rework-vars":40}]},{},[48])
+(48)
+});

@@ -1,27 +1,13 @@
 
-var fs = require('fs');
-
 module.exports = function($scope, $http, $window, compile) {
 
-  $scope.styles = fs.readFileSync('./css/base.min.css', 'utf8');
-
-  $scope.addStates = function() {
-    $scope.modules.forEach(function(m, i) {
-      m.isActive = true;
-    });
-    $scope.optionalModules.forEach(function(m, i) {
-      m.isActive = false;
-    });
-    $scope.variables.forEach(function(v, i) {
-      v.isActive = true;
-    });
-  }
-
+  $scope.collections = [];
+  $scope.variablesCollections = [];
   $scope.includes = [];
   $scope.compiled = '';
 
   $scope.build = function() {
-    $scope.compiled = compile([$scope.modules, $scope.optionalModules, $scope.variables]);
+    $scope.compiled = compile($scope.collections.concat($scope.variablesCollections));
     updateDownloadLink();
   };
 
