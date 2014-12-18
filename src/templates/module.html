@@ -1,0 +1,16 @@
+<label class="flex full-width p1 flex-center button-nav-light border rounded pointer"
+  ng-class="{'bg-light-blue': module.isActive }">
+  <div class="px1">
+    <input type="checkbox" ng-model="module.isActive" ng-change="build()">
+  </div>
+  <div class="flex-auto px1">
+    <h2 class="m0">{{ module.id }} <small class="h5 regular"> {{ module.version }}</small></h2>
+    <p class="mb0">{{ module.description }}</p>
+    <a ng-href="http://npmjs.com/packages/{{ module.id }}" target="_blank" class="h6 mr2">
+      NPM
+    </a>
+    <a ng-href="{{ module.homepage }}" target="_blank" class="h6">
+      Github
+    </a>
+  </div>
+</label>
