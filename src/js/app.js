@@ -20,3 +20,5 @@ customCss.filter('astCss', require('./filters/ast-css'));
 
 customCss.filter('filesize', require('./filters/filesize'));
 
+module.exports = customCss;
+
