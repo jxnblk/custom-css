@@ -1,12 +1,8 @@
 
-var fs = require('fs');
-
 module.exports = function($http) {
-  var template = fs.readFileSync('./src/templates/custom-css.html', 'utf8');
   return {
     controller: 'MainCtrl',
-    template: template,
-    scope: '=',
+    scope: true,
     link: {
       pre: function(scope, el, attr) {
         scope.dataSource = attr.src;

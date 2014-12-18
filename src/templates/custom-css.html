@@ -1,5 +1,6 @@
 
 <div class="CustomCss md-flex flex-stretch">
+  <style>{{ styles }}</style>
   <div class="md-col-8 py3">
 
     <section class="px2 mb3">
@@ -10,7 +11,8 @@
       </div>
       <form>
         <ol class="list-reset sm-flex flex-wrap mxn2">
-          <li ng-repeat="module in modules" module
+          <li ng-repeat="module in modules"
+            custom-css-module
             class="flex border-box sm-col-6 px2 mb3"></li>
         </ol>
       </form>
@@ -20,7 +22,8 @@
       <h2>Optional Modules</h2>
       <form>
         <ol class="list-reset sm-flex flex-wrap mxn2">
-          <li ng-repeat="module in optionalModules" module
+          <li ng-repeat="module in optionalModules"
+            custom-css-module
             class="flex border-box sm-col-6 px2 mb3"></li>
         </ol>
       </form>

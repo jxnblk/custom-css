@@ -3,7 +3,7 @@ var fs = require('fs');
 
 module.exports = function($scope, $http, $window, compile) {
 
-  //$scope.styles = fs.readFileSync('./css/base.min.css', 'utf8');
+  $scope.styles = fs.readFileSync('./css/base.min.css', 'utf8');
 
   $scope.addStates = function() {
     $scope.modules.forEach(function(m, i) {

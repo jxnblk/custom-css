@@ -10,7 +10,8 @@ customCss.config(['$compileProvider', function( $compileProvider ) {
 customCss.service('compile', require('./services/compile'));
 
 customCss.directive('customCss', require('./directives/custom-css'));
-customCss.directive('module', require('./directives/module'));
+customCss.directive('customCssView', require('./directives/view'));
+customCss.directive('customCssModule', require('./directives/module'));
 
 
 customCss.controller('MainCtrl', require('./controllers/main'));
