@@ -29,6 +29,7 @@ gulp.task('js', function() {
       transform: ['brfs']
     }))
     .pipe(ngAnnotate())
+    .pipe(gulp.dest('./js'))
     .pipe(uglify({
       mangle: false
     }))
