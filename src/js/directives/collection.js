@@ -30,23 +30,15 @@ module.exports = function($http) {
           });
         }
 
-        function initModuleStates(modules) {
-          modules.forEach(function(module) {
-            if (typeof module.isActive === 'undefined') {
-              module.isActive = false;
-            }
-          });
-        }
-
         $http.get(attr.src)
           .success(function(data) {
             scope.modules = data;
             if (isVariables) createVariablesArray(scope.modules);
-            //else initModuleStates(scope.modules);
             scope.collections[scope.index] = scope.modules;
             // Init
             scope.build();
           });
+
       }
     }
   }

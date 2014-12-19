@@ -1,7 +1,5 @@
 // App
 
-//require('angular-local-storage');
-
 var customCss = angular.module('custom-css', []);
 
 customCss.config(['$compileProvider', function( $compileProvider ) {   

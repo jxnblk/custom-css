@@ -11,7 +11,7 @@
   <div custom-css ng-init="options = { header: '/* Custom CSS */' }">
     {{ collection.length }} collections
     <div custom-css-collection src="modules.json">
-      <h2>Modules {{ index }}</h2>
+      <h2>Modules</h2>
       <button ng-click="selectAll(modules)">Select All</button>
       <button ng-click="deselectAll(modules)">Deselect All</button>
       <label class="block mb1" ng-repeat="module in modules">
@@ -20,14 +20,14 @@
       </label>
     </div>
     <div custom-css-collection src="optional-modules.json">
-      <h2>Optional Modules {{ index }}</h2>
+      <h2>Optional Modules</h2>
       <label class="block mb1" ng-repeat="module in modules">
         <input type="checkbox" ng-model="module.isActive" ng-change="build()">
         {{ module.name }}
       </label>
     </div>
     <div custom-css-collection src="variables.json" variables="true">
-      <h2>Variables {{ index }} ({{ variables.length }})</h2>
+      <h2>Variables ({{ variables.length }})</h2>
       <div ng-repeat="v in variables">
         <label class="h5 bold">{{ v.property }}:</label>
         <input type="text" class="block field-light" ng-model="v.value" ng-change="build()">

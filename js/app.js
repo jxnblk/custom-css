@@ -7173,14 +7173,12 @@ exports.__defineGetter__('mapFileCommentRegex', function () {
 module.exports = function($scope, $http, $window, compile) {
 
   $scope.collections = [];
-  $scope.variablesCollections = [];
   $scope.includes = [];
   $scope.compiled = '';
 
   $scope.build = function() {
-    $scope.compiled = compile($scope.collections.concat($scope.variablesCollections), $scope.options);
+    $scope.compiled = compile($scope.collections, $scope.options);
     updateDownloadLink();
-    //store();
   };
 
   $scope.deselectAll = function(arr) {
@@ -7203,27 +7201,6 @@ module.exports = function($scope, $http, $window, compile) {
     var url = (window.URL || window.webkitURL).createObjectURL( blob );
     $scope.downloadURL = url;
   };
-
-  /*
-  function getState() {
-    var state = localStorageService.get('customCss');
-    if (state) {
-      console.log(state);
-      $scope.collections = state.collections;
-      $scope.variablesCollections = state.variablesCollections;
-      $scope.build();
-    }
-  };
-
-  function store() {
-    var state = {};
-    state.collections = $scope.collections;
-    state.variablesCollections = $scope.variablesCollections;
-    localStorageService.set('customCss', state);
-  };
-  */
-
-  //getState();
 
 };
 
@@ -7261,23 +7238,15 @@ module.exports = function($http) {
           });
         }
 
-        function initModuleStates(modules) {
-          modules.forEach(function(module) {
-            if (typeof module.isActive === 'undefined') {
-              module.isActive = false;
-            }
-          });
-        }
-
         $http.get(attr.src)
           .success(function(data) {
             scope.modules = data;
             if (isVariables) createVariablesArray(scope.modules);
-            //else initModuleStates(scope.modules);
             scope.collections[scope.index] = scope.modules;
             // Init
             scope.build();
           });
+
       }
     }
   }
@@ -7310,8 +7279,6 @@ module.exports = function($http) {
 
 },{}],48:[function(_dereq_,module,exports){
 // App
-
-//require('angular-local-storage');
 
 var customCss = angular.module('custom-css', []);
 
