@@ -8,7 +8,7 @@
 </head>
 <body ng-app="custom-css">
 
-  <div custom-css>
+  <div custom-css ng-init="options = { header: '/* Custom CSS */' }">
     {{ collection.length }} collections
     <div custom-css-collection src="modules.json">
       <h2>Modules {{ index }}</h2>

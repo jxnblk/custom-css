@@ -7178,8 +7178,9 @@ module.exports = function($scope, $http, $window, compile) {
   $scope.compiled = '';
 
   $scope.build = function() {
-    $scope.compiled = compile($scope.collections.concat($scope.variablesCollections));
+    $scope.compiled = compile($scope.collections.concat($scope.variablesCollections), $scope.options);
     updateDownloadLink();
+    //store();
   };
 
   $scope.deselectAll = function(arr) {
@@ -7202,6 +7203,27 @@ module.exports = function($scope, $http, $window, compile) {
     var url = (window.URL || window.webkitURL).createObjectURL( blob );
     $scope.downloadURL = url;
   };
+
+  /*
+  function getState() {
+    var state = localStorageService.get('customCss');
+    if (state) {
+      console.log(state);
+      $scope.collections = state.collections;
+      $scope.variablesCollections = state.variablesCollections;
+      $scope.build();
+    }
+  };
+
+  function store() {
+    var state = {};
+    state.collections = $scope.collections;
+    state.variablesCollections = $scope.variablesCollections;
+    localStorageService.set('customCss', state);
+  };
+  */
+
+  //getState();
 
 };
 
@@ -7239,10 +7261,19 @@ module.exports = function($http) {
           });
         }
 
+        function initModuleStates(modules) {
+          modules.forEach(function(module) {
+            if (typeof module.isActive === 'undefined') {
+              module.isActive = false;
+            }
+          });
+        }
+
         $http.get(attr.src)
           .success(function(data) {
             scope.modules = data;
             if (isVariables) createVariablesArray(scope.modules);
+            //else initModuleStates(scope.modules);
             scope.collections[scope.index] = scope.modules;
             // Init
             scope.build();
@@ -7280,6 +7311,8 @@ module.exports = function($http) {
 },{}],48:[function(_dereq_,module,exports){
 // App
 
+//require('angular-local-storage');
+
 var customCss = angular.module('custom-css', []);
 
 customCss.config(['$compileProvider', function( $compileProvider ) {   
@@ -7292,18 +7325,10 @@ customCss.service('compile', _dereq_('./services/compile'));
 customCss.directive('customCss', _dereq_('./directives/custom-css'));
 customCss.directive('customCssCollection', _dereq_('./directives/collection'));
 
-//customCss.directive('customCssView', require('./directives/view'));
-//customCss.directive('customCssModule', require('./directives/module'));
-
-
 customCss.controller('MainCtrl', _dereq_('./controllers/main'));
 
-
 customCss.filter('astCss', _dereq_('./filters/ast-css'));
-
 customCss.filter('filesize', _dereq_('./filters/filesize'));
-
-//module.exports = customCss;
 
 
 },{"./controllers/main":45,"./directives/collection":46,"./directives/custom-css":47,"./filters/ast-css":49,"./filters/filesize":50,"./services/compile":51}],49:[function(_dereq_,module,exports){
@@ -7337,9 +7362,12 @@ var rcalc = _dereq_('rework-calc');
 var rcolors = _dereq_('rework-plugin-colors');
 
 module.exports = function() {
-  return function(arr) {
+  return function(arr, options) {
 
-    var combined = css.parse('/*\n  Basscss Custom Build \n  http://basscss.com \n*/');
+    var options = options || {};
+    options.header = options.header || '';
+
+    var combined = css.parse(options.header);
     var includes = [];
 
     arr.forEach(function(modules) {
