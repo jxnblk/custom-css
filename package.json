@@ -1,6 +1,6 @@
 {
   "name": "custom-css",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Angular directive-based web app to build custom stylesheets from a collection of modules",
   "author": "Brent Jackson",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.0.1",
     "gulp-uncss": "^0.5.1",
+    "angular-local-storage": "^0.1.5",
     "gulp-webserver": "^0.8.7"
   },
   "dependencies": {
@@ -56,38 +57,38 @@
   },
   "main": "./js/app.min.js",
   "css": {
-    "modules": {
-      "basscss-base-reset": "latest",
-      "basscss-base-typography": "latest",
-      "basscss-base-forms": "latest",
-      "basscss-base-buttons": "latest",
-      "basscss-base-tables": "latest",
-      "basscss-utility-layout": "latest",
-      "basscss-utility-typography": "latest",
-      "basscss-utility-white-space": "latest",
-      "basscss-utility-responsive-states": "latest",
-      "basscss-ui-utility-button-sizes": "latest",
-      "basscss-ui-utility-groups": "latest",
-      "basscss-ui-utility-disclosure-states": "latest",
-      "basscss-positions": "latest",
-      "basscss-grid": "latest",
-      "basscss-table-object": "latest",
-      "basscss-color-base": "latest",
-      "basscss-color-forms": "latest",
-      "basscss-color-forms-dark": "latest",
-      "basscss-color-tables": "latest",
-      "basscss-color-buttons": "latest",
-      "basscss-colors": "latest",
-      "basscss-color-borders": "latest"
-    },
-    "variables": {
-      "basscss-defaults": "latest"
-    },
-    "optionalModules": {
-      "flex-object": "latest",
-      "basscss-utility-headings": "latest",
-      "basscss-background-images": "latest"
-    }
+    "modules": [
+      "basscss-base-reset",
+      "basscss-base-typography",
+      "basscss-base-forms",
+      "basscss-base-buttons",
+      "basscss-base-tables",
+      "basscss-utility-layout",
+      "basscss-utility-typography",
+      "basscss-utility-white-space",
+      "basscss-utility-responsive-states",
+      "basscss-ui-utility-button-sizes",
+      "basscss-ui-utility-groups",
+      "basscss-ui-utility-disclosure-states",
+      "basscss-positions",
+      "basscss-grid",
+      "basscss-table-object",
+      "basscss-color-base",
+      "basscss-color-forms",
+      "basscss-color-forms-dark",
+      "basscss-color-tables",
+      "basscss-color-buttons",
+      "basscss-colors",
+      "basscss-color-borders"
+    ],
+    "variables": [
+      "basscss-defaults"
+    ],
+    "optionalModules": [
+      "flex-object",
+      "basscss-utility-headings",
+      "basscss-background-images"
+    ]
   },
   "scripts": {
     "start": "gulp"

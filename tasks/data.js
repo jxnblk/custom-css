@@ -5,16 +5,9 @@ var css = require('css');
 var rework = require('rework');
 var rnpm = require('rework-npm');
 
-module.exports = function(p) {
+module.exports = function(arr) {
 
-  var result = {};
-  result.modules = [];
-  result.optionalModules = []; 
-  result.variables = [];
-
-  var moduleKeys = Object.keys(p.css.modules);
-  var optionalModuleKeys = Object.keys(p.css.optionalModules);
-  var variablesKeys = Object.keys(p.css.variables);
+  var result = [];
 
   function parseModule(module, array) {
     var src = fs.readFileSync('./node_modules/' + module + '/index.css', 'utf8') || null;
@@ -33,6 +26,7 @@ module.exports = function(p) {
     });
   }
 
+  /*
   function removeComments(array) {
     array.forEach(function(obj) {
       if (!obj.ast.stylesheet.rules) return;
@@ -43,20 +37,12 @@ module.exports = function(p) {
       });
     });
   }
+  */
 
-  moduleKeys.forEach(function(module) {
-    parseModule(module, result.modules);
+  arr.forEach(function(module) {
+    parseModule(module, result);
   });
 
-  optionalModuleKeys.forEach(function(module) {
-    parseModule(module, result.optionalModules);
-  });
-
-  variablesKeys.forEach(function(module) {
-    parseModule(module, result.variables);
-    removeComments(result.variables);
-  });
-  
   return result;
 
 };

@@ -5,16 +5,18 @@ module.exports = function($http) {
     scope: true,
     link: {
       pre: function(scope, el, attr) {
-        scope.dataSource = attr.src;
+        //scope.dataSource = attr.src;
+        /*
         $http.get(attr.src)
           .success(function(data) {
             scope.modules = data.modules;
             scope.optionalModules = data.optionalModules;
             scope.variables = data.variables;
-            scope.addStates();
+            //scope.addStates();
             // Init
             scope.build();
           });
+        */
       }
     }
   }

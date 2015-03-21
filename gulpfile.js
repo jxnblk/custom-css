@@ -14,10 +14,10 @@ var webserver = require('gulp-webserver');
 gulp.task('css', function() {
   gulp.src('./src/css/base.css')
     .pipe(basswork())
-    .pipe(uncss({
-      html: glob.sync('./src/templates/**/*.html'),
-      ignore: ['.bg-light-blue']
-    }))
+    //.pipe(uncss({
+    //  html: glob.sync('./src/templates/**/*.html'),
+    //  ignore: ['.bg-light-blue']
+    //}))
     .pipe(minifyCss())
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./css'));
@@ -26,7 +26,8 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   gulp.src('./src/js/app.js')
     .pipe(browserify({
-      transform: ['brfs']
+      transform: ['brfs'],
+      standalone: 'customCss'
     }))
     .pipe(ngAnnotate())
     .pipe(gulp.dest('./js'))
@@ -38,10 +39,14 @@ gulp.task('js', function() {
 });
 
 gulp.task('data', function() {
-  var data = require('./tasks/data');
+  var cssdata = require('./tasks/data');
   var p = require('./package.json');
-  var modules = data(p);
-  fs.writeFileSync('data.json', JSON.stringify(modules, null, 2));
+  var modules = cssdata(p.css.modules);
+  fs.writeFileSync('modules.json', JSON.stringify(modules, null, 2));
+  var optionals = cssdata(p.css.optionalModules);
+  fs.writeFileSync('optional-modules.json', JSON.stringify(optionals, null, 2));
+  var variables = cssdata(p.css.variables);
+  fs.writeFileSync('variables.json', JSON.stringify(variables, null, 2));
 });
 
 gulp.task('serve', function() {

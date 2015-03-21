@@ -7,9 +7,12 @@ var rcalc = require('rework-calc');
 var rcolors = require('rework-plugin-colors');
 
 module.exports = function() {
-  return function(arr) {
+  return function(arr, options) {
 
-    var combined = css.parse('/*\n  Basscss Custom Build \n  http://basscss.com \n*/');
+    var options = options || {};
+    options.header = options.header || '';
+
+    var combined = css.parse(options.header);
     var includes = [];
 
     arr.forEach(function(modules) {
