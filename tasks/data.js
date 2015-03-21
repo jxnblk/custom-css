@@ -28,6 +28,7 @@ module.exports = function(p) {
       description: meta.description,
       version: meta.version,
       homepage: meta.homepage,
+      meta: meta,
       ast: ast
     });
   }
