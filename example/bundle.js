@@ -137,20 +137,16 @@ var CustomCss = React.createClass({displayName: "CustomCss",
 
   render: function() {
     return (
-      React.createElement("div", {className: ""}, 
-        React.createElement("div", {className: ""}, 
-          React.createElement(ModulesList, React.__spread({},  this.props,  this.state, 
-            {toggleActive: this.toggleActive, 
-            selectAll: this.selectAll, 
-            selectNone: this.selectNone}))
-        ), 
-        React.createElement("div", {className: ""}, 
-          React.createElement(Variables, React.__spread({},  this.props,  this.state, 
-            {updateDefaults: this.updateDefaults}))
-        ), 
-        React.createElement("div", null, 
-          React.createElement(Css, React.__spread({},  this.props,  this.state))
-        )
+      React.createElement("div", null, 
+        React.createElement(ModulesList, React.__spread({},  this.props,  this.state, 
+          {className: "mb3", 
+          toggleActive: this.toggleActive, 
+          selectAll: this.selectAll, 
+          selectNone: this.selectNone})), 
+        React.createElement(Variables, React.__spread({},  this.props,  this.state, 
+          {className: "mb3", 
+          updateDefaults: this.updateDefaults})), 
+        React.createElement(Css, React.__spread({},  this.props,  this.state))
       )
     )
   }
@@ -202,7 +198,7 @@ var ModulesList = React.createClass({displayName: "ModulesList",
 
   render: function() {
     return (
-      React.createElement("div", {className: "overflow-hidden"}, 
+      React.createElement("div", {className: this.props.className + 'overflow-hidden'}, 
         React.createElement("div", {className: "flex flex-baseline mxn1"}, 
           React.createElement("h3", {className: "flex-auto px1"}, "Modules"), 
           React.createElement("div", {className: "px1"}, 
@@ -212,7 +208,7 @@ var ModulesList = React.createClass({displayName: "ModulesList",
             )
           ), 
           React.createElement("div", {className: "px1"}, 
-            React.createElement("button", {className: "button button-small ml1 mr1 button-link", 
+            React.createElement("button", {className: "button button-small button-link", 
               onClick: this.props.selectNone}, 
               "Select None"
             )
@@ -234,7 +230,6 @@ module.exports = ModulesList;
 },{"classnames":14,"react":225}],4:[function(require,module,exports){
 
 var React = require('react');
-//var postcss = require('postcss');
 
 var Variables = React.createClass({displayName: "Variables",
 
@@ -272,7 +267,7 @@ var Variables = React.createClass({displayName: "Variables",
     var defaults = this.props.defaults;
     var keys = Object.keys(defaults);
     return (
-      React.createElement("div", {className: "overflow-hidden"}, 
+      React.createElement("div", {className: this.props.className + ' overflow-hidden'}, 
         React.createElement("h3", {className: ""}, "Custom Properties"), 
         React.createElement("ul", {className: "list-reset sm-flex flex-wrap mxn2"}, 
           keys.map(this.renderVariable)

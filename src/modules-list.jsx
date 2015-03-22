@@ -38,7 +38,7 @@ var ModulesList = React.createClass({
 
   render: function() {
     return (
-      <div className="overflow-hidden">
+      <div className={this.props.className + 'overflow-hidden'}>
         <div className="flex flex-baseline mxn1">
           <h3 className="flex-auto px1">Modules</h3>
           <div className="px1">
@@ -48,7 +48,7 @@ var ModulesList = React.createClass({
             </button>
           </div>
           <div className="px1">
-            <button className="button button-small ml1 mr1 button-link"
+            <button className="button button-small button-link"
               onClick={this.props.selectNone}>
               Select None
             </button>

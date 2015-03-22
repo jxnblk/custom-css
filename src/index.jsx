@@ -58,20 +58,16 @@ var CustomCss = React.createClass({
 
   render: function() {
     return (
-      <div className="">
-        <div className="">
-          <ModulesList {...this.props} {...this.state}
-            toggleActive={this.toggleActive}
-            selectAll={this.selectAll}
-            selectNone={this.selectNone} />
-        </div>
-        <div className="">
-          <Variables {...this.props} {...this.state}
-            updateDefaults={this.updateDefaults} />
-        </div>
-        <div>
-          <Css {...this.props} {...this.state} />
-        </div>
+      <div>
+        <ModulesList {...this.props} {...this.state}
+          className="mb3"
+          toggleActive={this.toggleActive}
+          selectAll={this.selectAll}
+          selectNone={this.selectNone} />
+        <Variables {...this.props} {...this.state}
+          className="mb3"
+          updateDefaults={this.updateDefaults} />
+        <Css {...this.props} {...this.state} />
       </div>
     )
   }

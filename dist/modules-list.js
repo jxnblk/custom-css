@@ -38,7 +38,7 @@ var ModulesList = React.createClass({displayName: "ModulesList",
 
   render: function() {
     return (
-      React.createElement("div", {className: "overflow-hidden"}, 
+      React.createElement("div", {className: this.props.className + 'overflow-hidden'}, 
         React.createElement("div", {className: "flex flex-baseline mxn1"}, 
           React.createElement("h3", {className: "flex-auto px1"}, "Modules"), 
           React.createElement("div", {className: "px1"}, 
@@ -48,7 +48,7 @@ var ModulesList = React.createClass({displayName: "ModulesList",
             )
           ), 
           React.createElement("div", {className: "px1"}, 
-            React.createElement("button", {className: "button button-small ml1 mr1 button-link", 
+            React.createElement("button", {className: "button button-small button-link", 
               onClick: this.props.selectNone}, 
               "Select None"
             )

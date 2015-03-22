@@ -1,11 +1,14 @@
+// example data build script
 
 var fs = require('fs');
 var path = require('path');
-var postcss = require('postcss');
-var minfo = require('get-module-info');
 
-var data = {};
-var modules = [
+var generateData = require('../tasks/data');
+
+var data;
+var options = {};
+
+options.modules = [
   'basscss-base-reset',
   'basscss-base-forms',
   'basscss-base-buttons',
@@ -36,18 +39,13 @@ var modules = [
   'basscss-colors',
 ];
 
+options.variables = [
+  'basscss-defaults'
+];
 
-data.modules = modules.map(function(m, i, arr) {
-  return minfo(m, { dirname: path.join(__dirname, '..') });
-});
+options.dirname = path.join(__dirname, '..');
 
-data.initialDefaults = {};
-var variablesCss = minfo('basscss-defaults', { dirname: path.join(__dirname, '..') }).css;
-var variablesRoot = postcss.parse(variablesCss);
-variablesRoot.eachDecl(function(decl) {
-  var key = decl.prop.replace(/^\-\-/, '');
-  data.initialDefaults[key] = decl.value;
-});
+data = generateData(options);
 
 fs.writeFileSync(path.join(__dirname, './data.json'), JSON.stringify(data));
 

@@ -58,20 +58,16 @@ var CustomCss = React.createClass({displayName: "CustomCss",
 
   render: function() {
     return (
-      React.createElement("div", {className: ""}, 
-        React.createElement("div", {className: ""}, 
-          React.createElement(ModulesList, React.__spread({},  this.props,  this.state, 
-            {toggleActive: this.toggleActive, 
-            selectAll: this.selectAll, 
-            selectNone: this.selectNone}))
-        ), 
-        React.createElement("div", {className: ""}, 
-          React.createElement(Variables, React.__spread({},  this.props,  this.state, 
-            {updateDefaults: this.updateDefaults}))
-        ), 
-        React.createElement("div", null, 
-          React.createElement(Css, React.__spread({},  this.props,  this.state))
-        )
+      React.createElement("div", null, 
+        React.createElement(ModulesList, React.__spread({},  this.props,  this.state, 
+          {className: "mb3", 
+          toggleActive: this.toggleActive, 
+          selectAll: this.selectAll, 
+          selectNone: this.selectNone})), 
+        React.createElement(Variables, React.__spread({},  this.props,  this.state, 
+          {className: "mb3", 
+          updateDefaults: this.updateDefaults})), 
+        React.createElement(Css, React.__spread({},  this.props,  this.state))
       )
     )
   }

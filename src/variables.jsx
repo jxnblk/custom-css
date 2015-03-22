@@ -1,6 +1,5 @@
 
 var React = require('react');
-//var postcss = require('postcss');
 
 var Variables = React.createClass({
 
@@ -38,7 +37,7 @@ var Variables = React.createClass({
     var defaults = this.props.defaults;
     var keys = Object.keys(defaults);
     return (
-      <div className="overflow-hidden">
+      <div className={this.props.className + ' overflow-hidden'}>
         <h3 className="">Custom Properties</h3>
         <ul className="list-reset sm-flex flex-wrap mxn2">
           {keys.map(this.renderVariable)}
