@@ -1,6 +1,6 @@
 {
   "name": "custom-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component to build custom stylesheets from a collection of modules",
   "author": "Brent Jackson",
   "license": "MIT",
