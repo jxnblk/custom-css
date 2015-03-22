@@ -5,14 +5,14 @@ var postcss = require('postcss');
 
 var ModulesList = require('./modules-list');
 var Css = require('./css');
-var CustomProperties = require('./custom-properties');
+var Variables = require('./variables');
 
 var CustomCss = React.createClass({
 
   getDefaultProps: function() {
     return {
       modules: [],
-      defaults: [],
+      initialDefaults: {}
     }
   },
 
@@ -20,10 +20,8 @@ var CustomCss = React.createClass({
     return {
       included: [],
       compiled: '',
+      defaults: this.props.initialDefaults,
     }
-  },
-
-  compile: function() {
   },
 
   toggleActive: function(i) {
@@ -32,12 +30,18 @@ var CustomCss = React.createClass({
     this.setState({ included: included });
   },
 
+  updateDefaults: function(defaults) {
+    this.setState({ defaults: defaults });
+  },
+
   componentDidMount: function() {
     var included = [];
     this.props.modules.forEach(function(m, i) {
       included.push(false);
     });
-    this.setState({ included: included });
+    this.setState({
+      included: included,
+    });
   },
 
   render: function() {
@@ -67,9 +71,10 @@ var CustomCss = React.createClass({
             toggleActive={this.toggleActive} />
         </div>
         <div>
-          <CustomProperties
+          <Variables
             {...this.props}
-            />
+            {...this.state}
+            updateDefaults={this.updateDefaults} />
         </div>
         <div>
           <Css

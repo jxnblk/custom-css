@@ -1,6 +1,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var postcss = require('postcss');
 var minfo = require('get-module-info');
 
 var data = {};
@@ -40,9 +41,14 @@ data.modules = modules.map(function(m, i, arr) {
   return minfo(m, { dirname: path.join(__dirname, '..') });
 });
 
-data.defaults = [
-  minfo('basscss-defaults', { dirname: path.join(__dirname, '..') }),
-];
+data.initialDefaults = {};
+var variablesCss = minfo('basscss-defaults', { dirname: path.join(__dirname, '..') }).css;
+var variablesRoot = postcss.parse(variablesCss);
+variablesRoot.eachDecl(function(decl) {
+  var key = decl.prop.replace(/^\-\-/, '');
+  data.initialDefaults[key] = decl.value;
+});
+console.log(data.initialDefaults);
 
 //console.log('data', data);
 //console.log(JSON.stringify(data.modules[0].ast, null, 2) );

@@ -13,13 +13,14 @@ var Css = React.createClass({displayName: "Css",
     return {
       modules: [],
       included: [],
-      defaults: [],
+      defaults: {},
     }
   },
 
-  compileCss: function() {
+  compileCss: function(defaults) {
     var self = this;
     var css = '';
+    //var defaults = this.props.defaults;
 
     this.props.included.forEach(function(active, i) {
       if (active) {
@@ -28,14 +29,10 @@ var Css = React.createClass({displayName: "Css",
         css += src;
       }
     });
-
-    this.props.defaults.forEach(function(m, i) {
-      css += m.css;
-    });
     
     var result = postcss()
       .use(customMedia())
-      .use(customProperties())
+      .use(customProperties({ variables: defaults }))
       .use(calc())
       .use(colorFunction())
       .process(css).css;
@@ -44,7 +41,7 @@ var Css = React.createClass({displayName: "Css",
 
   render: function() {
     var css = {
-      __html: this.compileCss()
+      __html: this.compileCss(this.props.defaults)
     };
     return (
       React.createElement("div", null, 
