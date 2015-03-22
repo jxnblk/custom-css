@@ -36,18 +36,24 @@ var Css = React.createClass({displayName: "Css",
       .use(calc())
       .use(colorFunction())
       .process(css).css;
-    return result;
+    var blob = new Blob([result], { type: 'text/plain' });
+    var url = (window.URL || window.webkitURL).createObjectURL( blob );
+    return { css: result, blob: blob, download: url };
+    //return result;
   },
 
+
   render: function() {
-    var css = {
-      __html: this.compileCss(this.props.defaults)
-    };
+    var obj = this.compileCss(this.props.defaults);
+    var code = { __html: obj.css };
+    var fileSize = obj.blob.size;
+    var download = obj.download;
     return (
       React.createElement("div", null, 
         React.createElement("h1", null, "css:"), 
-        React.createElement("pre", {dangerouslySetInnerHTML: css}), 
-        React.createElement("pre", null, "pre")
+        React.createElement("code", null, "size: ", fileSize), 
+        React.createElement("a", {href: download, download: "basscss-custom.css"}, "Download"), 
+        React.createElement("pre", {dangerouslySetInnerHTML: code})
       )
     )
   }
