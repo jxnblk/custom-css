@@ -1,8 +1,6 @@
 
 var React = require('react');
-
 var postcss = require('postcss');
-
 var ModulesList = require('./modules-list');
 var Css = require('./css');
 var Variables = require('./variables');
@@ -30,6 +28,20 @@ var CustomCss = React.createClass({displayName: "CustomCss",
     this.setState({ included: included });
   },
 
+  selectAll: function() {
+    var included = this.state.included.map(function(i) {
+      return true;
+    });
+    this.setState({ included: included });
+  },
+
+  selectNone: function() {
+    var included = this.state.included.map(function(i) {
+      return false;
+    });
+    this.setState({ included: included });
+  },
+
   updateDefaults: function(defaults) {
     this.setState({ defaults: defaults });
   },
@@ -45,41 +57,20 @@ var CustomCss = React.createClass({displayName: "CustomCss",
   },
 
   render: function() {
-    var styles = {
-      container: {
-        display: 'flex'
-      },
-      left: {
-        boxSizing: 'border-box',
-        padding: '0 2rem',
-        float: 'left',
-        width: '30%',
-      },
-      right: {
-        boxSizing: 'border-box',
-        padding: '0 2rem',
-        float: 'left',
-        width: '70%',
-      }
-    }
     return (
-      React.createElement("div", {style: styles.container}, 
-        React.createElement("div", null, 
-          React.createElement(ModulesList, React.__spread({}, 
-            this.props, 
-            this.state, 
-            {toggleActive: this.toggleActive}))
+      React.createElement("div", {className: ""}, 
+        React.createElement("div", {className: ""}, 
+          React.createElement(ModulesList, React.__spread({},  this.props,  this.state, 
+            {toggleActive: this.toggleActive, 
+            selectAll: this.selectAll, 
+            selectNone: this.selectNone}))
         ), 
-        React.createElement("div", null, 
-          React.createElement(Variables, React.__spread({}, 
-            this.props, 
-            this.state, 
+        React.createElement("div", {className: ""}, 
+          React.createElement(Variables, React.__spread({},  this.props,  this.state, 
             {updateDefaults: this.updateDefaults}))
         ), 
         React.createElement("div", null, 
-          React.createElement(Css, React.__spread({}, 
-            this.props, 
-            this.state))
+          React.createElement(Css, React.__spread({},  this.props,  this.state))
         )
       )
     )

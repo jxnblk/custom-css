@@ -21,12 +21,15 @@ var Variables = React.createClass({displayName: "Variables",
       self.props.updateDefaults(defaults);
     };
     return (
-      React.createElement("li", {key: 'variable-'+key}, 
-        React.createElement("label", null, key), 
+      React.createElement("li", {key: 'variable-'+key, 
+        className: "sm-col-6 md-col-4 lg-col-3 px2", 
+        style: { boxSizing: 'border-box'}}, 
+        React.createElement("label", {className: "h5 bold block"}, key), 
         React.createElement("input", {type: "text", 
           ref: key, 
           value: value, 
-          onChange: handleChange})
+          onChange: handleChange, 
+          className: "full-width field-light"})
       )
     )
   },
@@ -35,8 +38,11 @@ var Variables = React.createClass({displayName: "Variables",
     var defaults = this.props.defaults;
     var keys = Object.keys(defaults);
     return (
-      React.createElement("ul", null, 
-        keys.map(this.renderVariable)
+      React.createElement("div", {className: "overflow-hidden"}, 
+        React.createElement("h3", {className: ""}, "Custom Properties"), 
+        React.createElement("ul", {className: "list-reset sm-flex flex-wrap mxn2"}, 
+          keys.map(this.renderVariable)
+        )
       )
     )
   }

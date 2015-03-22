@@ -21,12 +21,15 @@ var Variables = React.createClass({
       self.props.updateDefaults(defaults);
     };
     return (
-      <li key={'variable-'+key}>
-        <label>{key}</label>
+      <li key={'variable-'+key}
+        className="sm-col-6 md-col-4 lg-col-3 px2"
+        style={{ boxSizing: 'border-box' }}>
+        <label className="h5 bold block">{key}</label>
         <input type="text"
           ref={key}
           value={value}
-          onChange={handleChange} />
+          onChange={handleChange}
+          className="full-width field-light" />
       </li>
     )
   },
@@ -35,9 +38,12 @@ var Variables = React.createClass({
     var defaults = this.props.defaults;
     var keys = Object.keys(defaults);
     return (
-      <ul>
-        {keys.map(this.renderVariable)}
-      </ul>
+      <div className="overflow-hidden">
+        <h3 className="">Custom Properties</h3>
+        <ul className="list-reset sm-flex flex-wrap mxn2">
+          {keys.map(this.renderVariable)}
+        </ul>
+      </div>
     )
   }
 

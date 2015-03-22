@@ -48,13 +48,7 @@ variablesRoot.eachDecl(function(decl) {
   var key = decl.prop.replace(/^\-\-/, '');
   data.initialDefaults[key] = decl.value;
 });
-console.log(data.initialDefaults);
-
-//console.log('data', data);
-//console.log(JSON.stringify(data.modules[0].ast, null, 2) );
-
 
 fs.writeFileSync(path.join(__dirname, './data.json'), JSON.stringify(data));
 
-//module.exports = data;
 
