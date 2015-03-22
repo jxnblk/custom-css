@@ -1,48 +1,34 @@
 
-var fs = require('fs');
-var path = require('path');
-var css = require('css');
-var rework = require('rework');
-var rnpm = require('rework-npm');
+var _ = require('lodash');
+var postcss = require('postcss');
+var modinfo = require('get-module-info');
 
-module.exports = function(arr) {
+module.exports = function(options) {
 
-  var result = [];
-
-  function parseModule(module, array) {
-    var src = fs.readFileSync('./node_modules/' + module + '/index.css', 'utf8') || null;
-    if (!src) return;
-    var ast = rework(src)
-      .use(rnpm({ root: './node_modules/' + module })).obj;
-    var meta = require(module + '/package.json') || null;
-    array.push({
-      id: module,
-      name: meta.name,
-      description: meta.description,
-      version: meta.version,
-      homepage: meta.homepage,
-      meta: meta,
-      ast: ast
-    });
-  }
-
-  /*
-  function removeComments(array) {
-    array.forEach(function(obj) {
-      if (!obj.ast.stylesheet.rules) return;
-      obj.ast.stylesheet.rules.forEach(function(rule, i) {
-        if (rule.type == 'comment') {
-          obj.ast.stylesheet.rules.splice(i, 1);
-        }
-      });
-    });
-  }
-  */
-
-  arr.forEach(function(module) {
-    parseModule(module, result);
+  var options = options || {};
+  options = _.defaults(options, {
+    dirname: '.',
+    modules: [],
+    variables: [],
   });
 
-  return result;
+
+  var data = {};
+  data.modules = options.modules.map(function(mod) {
+    return modinfo(mod, { dirname: options.dirname });
+  });
+
+  data.initialDefaults = {};
+  options.variables.forEach(function(name) {
+    var css = modinfo(name, { dirname: options.dirname }).css;
+    var root = postcss.parse(css);
+    root.eachDecl(function(decl) {
+      var key = decl.prop.replace(/^\-\-/,'');
+      data.initialDefaults[key] = decl.value;
+    });
+  });
+
+  return data;
 
 };
+
