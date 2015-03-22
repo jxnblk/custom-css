@@ -20,9 +20,10 @@ var ModulesList = React.createClass({displayName: "ModulesList",
     };
     return (
       React.createElement("li", {key: 'module-'+m.name}, 
-        React.createElement("input", {type: "checkbox", onChange: handleChange}), 
-        m.name, " [", isActive ? 'active' : 'inactive', "]", 
-        React.createElement("pre", {dangerouslySetInnerHtml: {__html: m.css}})
+        React.createElement("label", {className: "block"}, 
+          React.createElement("input", {type: "checkbox", onChange: handleChange}), 
+          React.createElement("h3", null, m.name)
+        )
       )
     )
   },

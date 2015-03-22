@@ -5,12 +5,14 @@ var postcss = require('postcss');
 
 var ModulesList = require('./modules-list');
 var Css = require('./css');
+var CustomProperties = require('./custom-properties');
 
 var CustomCss = React.createClass({
 
   getDefaultProps: function() {
     return {
       modules: [],
+      defaults: [],
     }
   },
 
@@ -39,13 +41,41 @@ var CustomCss = React.createClass({
   },
 
   render: function() {
+    var styles = {
+      container: {
+        display: 'flex'
+      },
+      left: {
+        boxSizing: 'border-box',
+        padding: '0 2rem',
+        float: 'left',
+        width: '30%',
+      },
+      right: {
+        boxSizing: 'border-box',
+        padding: '0 2rem',
+        float: 'left',
+        width: '70%',
+      }
+    }
     return (
-      <div>
-        <ModulesList
-          {...this.props}
-          {...this.state}
-          toggleActive={this.toggleActive} />
-        <Css {...this.props} {...this.state} />
+      <div style={styles.container}>
+        <div>
+          <ModulesList
+            {...this.props}
+            {...this.state}
+            toggleActive={this.toggleActive} />
+        </div>
+        <div>
+          <CustomProperties
+            {...this.props}
+            />
+        </div>
+        <div>
+          <Css
+            {...this.props}
+            {...this.state} />
+        </div>
       </div>
     )
   }

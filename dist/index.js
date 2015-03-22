@@ -5,12 +5,14 @@ var postcss = require('postcss');
 
 var ModulesList = require('./modules-list');
 var Css = require('./css');
+var CustomProperties = require('./custom-properties');
 
 var CustomCss = React.createClass({displayName: "CustomCss",
 
   getDefaultProps: function() {
     return {
       modules: [],
+      defaults: [],
     }
   },
 
@@ -39,13 +41,41 @@ var CustomCss = React.createClass({displayName: "CustomCss",
   },
 
   render: function() {
+    var styles = {
+      container: {
+        display: 'flex'
+      },
+      left: {
+        boxSizing: 'border-box',
+        padding: '0 2rem',
+        float: 'left',
+        width: '30%',
+      },
+      right: {
+        boxSizing: 'border-box',
+        padding: '0 2rem',
+        float: 'left',
+        width: '70%',
+      }
+    }
     return (
-      React.createElement("div", null, 
-        React.createElement(ModulesList, React.__spread({}, 
-          this.props, 
-          this.state, 
-          {toggleActive: this.toggleActive})), 
-        React.createElement(Css, React.__spread({},  this.props,  this.state))
+      React.createElement("div", {style: styles.container}, 
+        React.createElement("div", null, 
+          React.createElement(ModulesList, React.__spread({}, 
+            this.props, 
+            this.state, 
+            {toggleActive: this.toggleActive}))
+        ), 
+        React.createElement("div", null, 
+          React.createElement(CustomProperties, React.__spread({}, 
+            this.props)
+            )
+        ), 
+        React.createElement("div", null, 
+          React.createElement(Css, React.__spread({}, 
+            this.props, 
+            this.state))
+        )
       )
     )
   }

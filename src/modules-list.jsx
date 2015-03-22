@@ -20,9 +20,10 @@ var ModulesList = React.createClass({
     };
     return (
       <li key={'module-'+m.name}>
-        <input type="checkbox" onChange={handleChange} />
-        {m.name} [{isActive ? 'active' : 'inactive'}]
-        <pre dangerouslySetInnerHtml={{__html: m.css}} />
+        <label className="block">
+          <input type="checkbox" onChange={handleChange} />
+          <h3>{m.name}</h3>
+        </label>
       </li>
     )
   },

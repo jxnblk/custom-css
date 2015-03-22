@@ -1,9 +1,11 @@
 
 var React = require('react');
 var postcss = require('postcss');
-var cssnext = require('cssnext'); 
-
-var processor = postcss();
+  var postcssImport = require('postcss-import');
+var customProperties = require('postcss-custom-properties');
+var customMedia = require('postcss-custom-media');
+var calc = require('postcss-calc');
+var colorFunction = require('postcss-color-function');
 
 var Css = React.createClass({displayName: "Css",
 
@@ -11,24 +13,33 @@ var Css = React.createClass({displayName: "Css",
     return {
       modules: [],
       included: [],
+      defaults: [],
     }
   },
 
   compileCss: function() {
     var self = this;
     var css = '';
+
     this.props.included.forEach(function(active, i) {
       if (active) {
         var module = self.props.modules[i];
-        console.log('active', active, module.name, module.css);
-        console.table(module.ast);
-        var src = self.props.modules[i].css;
-        css += processor.process(src).css;
-        //css += cssnext(src);
+        var src = module.css;
+        css += src;
       }
     });
-    console.log(css);
-    return css;
+
+    this.props.defaults.forEach(function(m, i) {
+      css += m.css;
+    });
+    
+    var result = postcss()
+      .use(customMedia())
+      .use(customProperties())
+      .use(calc())
+      .use(colorFunction())
+      .process(css).css;
+    return result;
   },
 
   render: function() {
