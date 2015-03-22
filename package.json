@@ -27,6 +27,7 @@
     "postcss-import": "^5.0.3",
     "react": "^0.13.1",
     "react-tools": "^0.13.1",
+    "reactify": "^1.1.0",
     "webpack": "^1.7.3"
   },
   "devDependencies": {
@@ -62,7 +63,6 @@
     "http-server": "^0.8.0",
     "json-loader": "^0.5.1",
     "jsx-loader": "^0.12.2",
-    "reactify": "^1.1.0",
     "watch": "^0.14.0",
     "webpack-dev-server": "^1.7.0"
   },
